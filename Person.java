@@ -106,9 +106,17 @@ public class Person {
 		 * because the instance variable age and the 
 		 * parameter age have the same name.
 		 */
-		this.age = age;
+
+		if(age < 0)
+			this.age = -1;
+		else
+			this.age = age;
 		
-		height = newHeight;
+		if(newHeight < 0)
+			this.height = 0;
+		else
+			height = newHeight;
+		
 		name = "NA";
 		eyeColor = "NA";
 		ssn = "NA";
@@ -118,7 +126,11 @@ public class Person {
 	public Person(String newName, int newAge, String
 			newEyeColor, double newHeight, String newGender) {
 		name = newName;
-		age = newAge;
+		if(newAge < 0)
+			this.age = -1;
+		else
+			this.age = newAge;
+		
 		eyeColor = newEyeColor;
 		height = newHeight;
 		gender = newGender;
@@ -128,7 +140,12 @@ public class Person {
 			newEyeColor, double newHeight, String newGender,
 			String newSSN) {
 		name = newName;
-		age = newAge;
+		
+		if(newAge < 0)
+			this.age = -1;
+		else
+			this.age = newAge;
+		
 		eyeColor = newEyeColor;
 		height = newHeight;
 		gender = newGender;
@@ -175,7 +192,13 @@ public class Person {
 	 * Let us now create a setter for age.
 	 */
 	public void setAge(int age) {
-		this.age = age;
+		
+		//if input value is negative, set age to -1
+		
+		if(age < 0)
+			this.age = -1;
+		else
+			this.age = age;
 	}
 	
 	public void setHeight(double hight) {
@@ -237,22 +260,46 @@ public class Person {
 	 * 
 	 * We will finish this method on Monday
 	 */
-	public boolean equals(Person otherPerson) {
+	
+	// Step: 1
+	public boolean equals(Object obj) {
 		
 		/* It is important to do a null check
 		 * on the parameter;
+		 * 
+		 * step 2:
 		 */
-		if(otherPerson == null)
+		if(obj == null)
 			return false;
+		
+		
+		/* We now have to convert the object obj (our parameter into
+		 * a person. This is called type casting (type conversion).
+		 * 
+		 * The reason for type casting obj is because it is not a Person
+		 * but  but Object. We want to be able to compare a person
+		 * to person.
+		 */
+		
+		// Step 3
+		if (!obj.getClass().equals(this.getClass()))
+			return false;
+		
+		// Step 4: type conversion
+		Person otherPerson = (Person)obj;
+		
 		
 		/* if they have the same address, we return true
 		 * 
+		 * Step 5: Address check
 		 */
 		if (this == otherPerson)
 			return true;
 		
 		/* it is important to start your comparison
 		 * with your variables for numbers
+		 * 
+		 * step 6: 
 		 */
 		if(this.age != otherPerson.age)
 			return false;
@@ -274,6 +321,28 @@ public class Person {
 		
 		return true;
 	}
+	
+	/* toString: Returns a string representation of the object.
+	*/
+	public String toString(){
+
+		return "Name: " + this.name + ", age: " + this.age + 
+				", Eye Color: " + this.eyeColor + ", SSN: " + this.ssn +
+				", Height: " + this.height + ", Genger: " + this.gender;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static void main(String [] args) {
 		/* 
