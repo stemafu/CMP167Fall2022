@@ -39,6 +39,7 @@ public class PersonDriver2 {
 		
 		persons[0] = p1;
 		persons[1] = p2;
+		
 		double totalheight = 0;
 		for(int i = 0; i < 2; i++) {
 			totalheight = totalheight + persons[i].getHeight();

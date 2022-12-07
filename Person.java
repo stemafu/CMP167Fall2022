@@ -163,6 +163,7 @@ public class Person {
 		System.out.println("Eye color: " + this.getEyeColor());
 		System.out.println("Height: " + this.getHeight());
 		System.out.println("SSN: " + this.getSSN());
+		System.out.println();
 	}
 
 	
